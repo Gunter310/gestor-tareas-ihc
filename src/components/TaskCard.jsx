@@ -1,11 +1,11 @@
-﻿function TaskCard() {
+﻿function TaskCard({nombre_materia, docente, fecha, estado}) {
     return (
-        
+
         <div>
-            <h3> Examen de IHC </h3>
-            <p>Docente: Bryana Ojopi </p>
-            <p> Fecha: 02/10/2026</p>
-            <p> Estado: Finalizado </p>
+            <h3>{nombre_materia}</h3>
+            <p>Nombre docente: {docente}</p>
+            <p> Fecha: {fecha}</p>
+            <p> Estado: {estado} </p>
         </div>
     )
 }
