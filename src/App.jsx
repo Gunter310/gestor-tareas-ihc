@@ -1,28 +1,23 @@
-import Header from './components/Header';
-import TaskCard from './components/TaskCard';
-import Footer from './components/Footer';
-import './App.css';
+import './App.css'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import FiltroTareas from './components/FiltroTareas'
 
 function App() {
-    return (
-        <div>
-            <Header />
-            <TaskCard
-                nombre_materia="IHC"
-                docente="Bryana"
-                fecha="10/10/2026"
-                estado="Finalizada"
-            />
 
-            <TaskCard
-                nombre_materia="Programacion 2"
-                docente="Daniel Quino"
-                fecha="10/04/2026"
-                estado="Pendiente"
-            />
-            <Footer />
-        </div>
-    );
+    //COMPLETAR LOS ESTILOS CON TAILWIND PARA EL HEADER Y PARA EL FOOTER (LIBRE)
+    return (
+        <>
+            <div className='min-h-screen bg-gray-100'>
+                <Header />
+                <main className='max-w-4xl mx-auto px-6 py-8'>
+                    <h2 className='text-2xl font-bold text-gray-800 mb-6'>Mis tareas</h2>
+                    <FiltroTareas />
+                </main>
+                <Footer />
+            </div>
+        </>
+    )
 }
 
-export default App;
+export default App
