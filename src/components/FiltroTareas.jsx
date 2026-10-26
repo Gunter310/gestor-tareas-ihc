@@ -1,8 +1,7 @@
 ﻿import { useState } from "react"
-import tareas from "../data/tareas"
 import TaskCard from "./TaskCard"
 
-function FiltroTareas() {
+function FiltroTareas({ tareas }) {
     // 1. Un estado para cada filtro
     const [busqueda, setBusqueda] = useState("")
     const [estado, setEstado] = useState("")
