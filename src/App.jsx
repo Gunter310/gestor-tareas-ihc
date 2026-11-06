@@ -17,6 +17,11 @@ function App() {
         ])
     }
 
+    // Deja todas las tareas excepto la que tiene el id recibido
+    function eliminarTarea(id) {
+        setTareas(tareas.filter((t) => t.id !== id))
+    }
+
     return (
         <>
             <div className='min-h-screen bg-gray-100'>
@@ -24,7 +29,7 @@ function App() {
                 <main className='max-w-4xl mx-auto px-6 py-8'>
                     <ActivityForm onAgregarTarea={agregarTarea} />
                     <h2 className='text-2xl font-bold text-gray-800 mb-6'>Mis tareas</h2>
-                    <FiltroTareas tareas={tareas} />
+                    <FiltroTareas tareas={tareas} onDeleteTask={eliminarTarea} />
                 </main>
                 <Footer />
             </div>

@@ -1,7 +1,7 @@
 ﻿import { useState } from "react"
 import TaskCard from "./TaskCard"
 
-function FiltroTareas({ tareas }) {
+function FiltroTareas({ tareas, onDeleteTask }) {
     // 1. Un estado para cada filtro
     const [busqueda, setBusqueda] = useState("")
     const [estado, setEstado] = useState("")
@@ -69,10 +69,12 @@ function FiltroTareas({ tareas }) {
                     {tareasFiltradas.map((t) => (
                         <TaskCard
                             key={t.id}
+                            id={t.id}
                             nombre_materia={t.nombre_materia}
                             docente={t.docente}
                             fecha={t.fecha}
                             estado={t.estado}
+                            onDeleteTask={onDeleteTask}
                         />
                     ))}
                 </div>

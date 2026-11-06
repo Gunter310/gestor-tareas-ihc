@@ -9,13 +9,16 @@ const coloresEstado = {
 }
 
 function TaskCard({
+                      id,
                       nombre_materia,
                       docente,
                       fecha,
-                      estado
+                      estado,
+                      onDeleteTask
                   }) {
     //uso de useState
     const [estadoActual, setEstadoActual] = useState(estado)
+
     function completarActividad() {
         setEstadoActual("Completado")
         //ESTADO: la informacion que puede cambiar mientras el usuario usa la app
@@ -24,6 +27,18 @@ function TaskCard({
 
     function pasarPendiente() {
         setEstadoActual("Pendiente")
+    }
+
+    // Pide confirmación antes de eliminar
+    function eliminarActividad() {
+        const confirmado = window.confirm(
+            `¿Seguro que quieres eliminar la tarea de "${nombre_materia}"? Esta acción no se puede deshacer.`
+        )
+
+        // Si el usuario pulsa Cancelar, no se hace nada
+        if (confirmado) {
+            onDeleteTask(id)
+        }
     }
 
     //ESTABLECER UNA UNICA FUNCION PARA VALIDAR Y CAMBIAR LOS ESTADOS UTILIZANDO:
@@ -42,7 +57,7 @@ function TaskCard({
             <p className="mt-1 text-gray-600">Docente: {docente}</p>
             <p className="text-sm text-gray-500">Fecha: {fecha}</p>
 
-            <div className="mt-4">
+            <div className="mt-4 flex gap-2">
                 {
                     estadoActual != "Completado" && (
                         <button
@@ -57,6 +72,9 @@ function TaskCard({
                             onClick={pasarPendiente}>Pasar a Pendiente</button>
                     )
                 }
+                <button
+                    className="rounded-lg border border-red-300 hover:bg-red-50 text-red-600 text-sm font-medium px-4 py-2"
+                    onClick={eliminarActividad}>Eliminar</button>
             </div>
         </div>
     )
